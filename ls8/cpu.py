@@ -94,6 +94,14 @@ class CPU:
         self.ram[top_of_stack_add] = value
         self.pc += 2
 
+    def POP(self):
+        top_of_stack_add = self.reg[SP]
+        value = self.ram[top_of_stack_add]
+        reg_num = self.ram[self.pc + 1]
+        self.reg[reg_num] = value
+        self.reg[SP] += 1
+        self.pc += 2
+
     def call_fun(self, n):
         branch_table = {
             NOP : self.NOP,
