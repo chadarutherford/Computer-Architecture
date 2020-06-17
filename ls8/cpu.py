@@ -86,6 +86,14 @@ class CPU:
     def NOP(self):
         self.pc += 1
 
+    def PUSH(self):
+        reg_num = self.ram[self.pc + 1]
+        value = self.reg[reg_num]
+        self.reg[SP] -= 1
+        top_of_stack_add = self.reg[SP]
+        self.ram[top_of_stack_add] = value
+        self.pc += 2
+
     def call_fun(self, n):
         branch_table = {
             NOP : self.NOP,
