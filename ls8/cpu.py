@@ -120,6 +120,12 @@ class CPU:
         subroutine_addr = self.reg[reg_num]
 
         self.pc = subroutine_addr
+
+    def RET(self):
+        subroutine_addr = self.ram[self.reg[SP]]
+        self.reg[SP] += 1
+        self.pc = subroutine_addr
+        
     def call_fun(self, n):
         branch_table = {
             NOP : self.NOP,
@@ -130,7 +136,8 @@ class CPU:
             ADD : self.ADD,
             PUSH : self.PUSH,
             POP : self.POP,
-            CALL : self.CALL
+            CALL : self.CALL,
+            RET : self.RET
         }
 
         f = branch_table[n]
