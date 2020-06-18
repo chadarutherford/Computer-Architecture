@@ -85,6 +85,12 @@ class CPU:
         self.alu("MUL", reg_num1, reg_num2)
         self.pc += 3
 
+    def ADD(self):
+        reg_num1 = self.ram_read(self.pc + 1)
+        reg_num2 = self.ram_read(self.pc + 2)
+        self.alu("ADD", reg_num1, reg_num2)
+        self.pc += 3
+
     def NOP(self):
         self.pc += 1
 
