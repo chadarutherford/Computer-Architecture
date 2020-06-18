@@ -108,7 +108,9 @@ class CPU:
             HLT : self.HLT,
             PRN : self.PRN,
             LDI : self.LDI,
-            MUL : self.MUL
+            MUL : self.MUL,
+            PUSH : self.PUSH,
+            POP : self.POP
         }
 
         f = branch_table[n]
