@@ -12,6 +12,7 @@ RET = 0b00010001
 CALL = 0b01010000
 PUSH = 0b01000101
 SP = 0b00000111
+ADD = 0b10100000
 
 class CPU:
     """Main CPU class."""
@@ -41,7 +42,6 @@ class CPU:
             self.reg[reg_a] += self.reg[reg_b]
         elif op == "MUL":
             self.reg[reg_a] *= self.reg[reg_b]
-        #elif op == "SUB": etc
         else:
             raise Exception("Unsupported ALU operation")
 
@@ -121,6 +121,7 @@ class CPU:
             PRN : self.PRN,
             LDI : self.LDI,
             MUL : self.MUL,
+            ADD : self.ADD,
             PUSH : self.PUSH,
             POP : self.POP,
             CALL : self.CALL
